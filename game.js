@@ -27,19 +27,27 @@ function playRound(playerSelection, computerSelection) {
     } 
 }
 
+function displayScore() {
+    let playerScore = document.querySelector('#playerScore');
+    let computerScore = document.querySelector('#computerScore');
+    playerScore.textContent = `Player: ${pointsPlayer}`;
+    computerScore.textContent = `Computer: ${pointsComputer}`;
+}
+
 
 function game() {
     // points get resettes for every new game
     pointsPlayer, pointsComputer = 0;
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt(`Rock, Paper or Scissors? Choose wisely. You've got ${rounds} round(s)!`).toLowerCase();
-        const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
-        console.log(`Player: ${pointsPlayer}` + "\n" + `Computer: ${pointsComputer}`)
-     }
+    // for (let i = 0; i < 5; i++) {
+    //     const playerSelection = prompt(`Rock, Paper or Scissors? Choose wisely. You've got ${rounds} round(s)!`).toLowerCase();
+    //     const computerSelection = computerPlay();
+    //     console.log(playRound(playerSelection, computerSelection));
+    //     console.log(`Player: ${pointsPlayer}` + "\n" + `Computer: ${pointsComputer}`)
+    //  }
 }
 
 game();
+displayScore();
 
 // console.log("Player: " + playerSelection + "\n" + "Computer: " + computerSelection)
 
