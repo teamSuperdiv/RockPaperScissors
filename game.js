@@ -2,6 +2,10 @@
 let rounds = 5;
 let pointsPlayer = 0;
 let pointsComputer = 0;
+// let gameStart = false;
+
+let feedback = document.querySelector('.feedback');
+
 
 function computerPlay() {
     let random = Math.floor(Math.random()*3) +1;
@@ -15,16 +19,41 @@ function computerPlay() {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
-    if ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "paper") || (playerSelection === "paper" && computerSelection === "rock")) {
-        pointsPlayer++;
-        return "Congrats! You beat the system!"
-    } else if (playerSelection === computerSelection) {
-        return "Uhhhhh, it's a tie!"
-    } else {
-        pointsComputer++;
-        return "Sorry, you loose!" 
-    } 
+function playRound(playerSelection, el) {
+    pointsPlayer, pointsComputer = 0;
+    el.classList.toggle('selected');
+    let computerSelection = computerPlay();
+    setTimeout(() => {
+        if ((playerSelection === "rock" && computerSelection === "scissors") || (playerSelection === "scissors" && computerSelection === "paper") || (playerSelection === "paper" && computerSelection === "rock")) {
+            el.classList.toggle('selected');
+            el.classList.toggle('success');
+            pointsPlayer++;
+            displayScore();
+            feedback.textContent = "Congrats! You beat the system!";
+        } else if (playerSelection === computerSelection) {
+            feedback.textContent = "Uhhhhh, it's a tie!";
+        } else {
+            el.classList.toggle('selected');
+            el.classList.toggle('defeat');
+            pointsComputer++;
+            displayScore();
+            feedback.textContent = "Sorry, you loose!";
+        };
+        setTimeout(clearCard, 1000);
+        rounds--;
+        checkIfGameOver();
+    }, 2000)
+}
+
+function clearCard() {
+    const classes = ['selected', 'success', 'defeat'];
+    const buttons = document.querySelectorAll('.playerBtn');
+    buttons.forEach((btn) => {
+       classes.forEach((cl) => {
+        if (btn.classList.contains(cl)) btn.classList.remove(cl);
+       })
+    });
+    
 }
 
 function displayScore() {
@@ -34,22 +63,15 @@ function displayScore() {
     computerScore.textContent = `Computer: ${pointsComputer}`;
 }
 
-
-function game() {
-    // points get resettes for every new game
-    pointsPlayer, pointsComputer = 0;
-    // for (let i = 0; i < 5; i++) {
-    //     const playerSelection = prompt(`Rock, Paper or Scissors? Choose wisely. You've got ${rounds} round(s)!`).toLowerCase();
-    //     const computerSelection = computerPlay();
-    //     console.log(playRound(playerSelection, computerSelection));
-    //     console.log(`Player: ${pointsPlayer}` + "\n" + `Computer: ${pointsComputer}`)
-    //  }
+function checkIfGameOver() {
+    if (rounds == 0 && pointsPlayer > pointsComputer) {
+        feedback.textContent = 'GAME OVER. You are the Winner!';
+    } else if (rounds == 0 && pointsComputer == pointsPlayer) {
+        feedback.textContent = 'GAME OVER. You are both equally good!';
+    } else if (rounds == 0) {
+        feedback.textContent = 'GAME OVER. You lost...against a machine.';
+    }
 }
-
-game();
-displayScore();
-
-// console.log("Player: " + playerSelection + "\n" + "Computer: " + computerSelection)
 
 
 

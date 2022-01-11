@@ -45,6 +45,7 @@ h1 {
 .mainGame {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 7rem;
 }
 
 .btn,

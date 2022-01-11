@@ -20,13 +20,13 @@
         </div>
         <div class="container mainGame">
             <div class="player">
-                <button class="btn playerBtn" onclick="playRound('rock')">
+                <button class="btn playerBtn" onclick="playRound('rock', this)">
                     <img src="./img/rock_pixelart.png" height="200" alt="Rock Pixelart">
                 </button>
-                <button class="btn playerBtn" onclick="playRound('paper')">
+                <button class="btn playerBtn" onclick="playRound('paper', this)">
                     <img src="./img/paper_pixelart.png" height="200" alt="Paper Pixelart">
                 </button>
-                <button class="btn playerBtn" onclick="playRound('scissors')">
+                <button class="btn playerBtn" onclick="playRound('scissors', this)">
                    <img src="./img/scissors_pixelart.png" height="200" alt="Scissors Pixelart"> 
                 </button>
             </div>
@@ -34,10 +34,9 @@
                 <img src="./img/questionmark_pixelart.png" id="questionMark" height="200" alt="Questionmark Pixelart">
             </div>
         </div>
-        <div class="results">
-            <p></p>
+        <div class="container feedback-container">
+            <h3 class="feedback"></h3>
         </div>
-        
     </main>
    
     <script src="/game.js"></script>
