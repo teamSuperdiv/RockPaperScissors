@@ -1,2 +1,3 @@
 # RockPaperScissors
-Project from TOP Foundations
+--- Project from TOP (The Odin Project) Foundations ---
+Live: https://teamsuperdiv.github.io/RockPaperScissors/
