@@ -11,14 +11,23 @@ Custom Font
 /***********************
 Base styles
 ***********************/
-html {
-    background-image: url(./img/bg2.png);
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    background-image: url(./img/bg2.png);
+    background-size: contain;
     font-family: 'PressStart2';
     color: white;
 }
+
+main {
+    height: 94vh;
+}
+
 .container {
     max-width: 1140px;
     margin: auto;
@@ -27,10 +36,22 @@ html {
 /***********************
 Main Game 
 ***********************/
-h1 {
+
+/* Game Title and Introduction*/
+.intro {
+    padding-top: 3rem;
+    margin-bottom: 6rem;
     text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 4rem;
+}
+
+
+.intro > h1 {
+    margin-bottom: 2rem;
+}
+
+/* Rounds Title */
+#rounds {
+    text-align: center;
 }
 
 /* Score Container */
@@ -39,15 +60,17 @@ h1 {
     display: flex;
     gap: 20px;
     margin: auto;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
 }
 
+/* Gameboard */
 .mainGame {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 7rem;
+    margin-bottom: 4rem;
 }
 
+/* Game Cards/Buttons */
 .btn,
 .computer {
     background-color: white;
@@ -57,13 +80,14 @@ h1 {
     transition: 0.3s ease;
 }
 
+/* Styles for the Buttons depending on the action and the outcome */
 .btn.playerBtn:hover {
     cursor: pointer;
     box-shadow: none;
     background: #f5c71a;
 }
 
-.btn.playerBtn.selected {
+.btn.playerBtn.tie {
     box-shadow: none;
     background: #f5c71a;
 }
@@ -78,39 +102,35 @@ h1 {
     background: red;
 }
 
-/* Questionmark animation */
-.computer {
-    animation-name: wiggle;
-    -webkit-animation-name: wiggle;
-    -ms-animation-name: wiggle;
-    animation-duration: 1500ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-
+.feedback {
+    margin-bottom: 1rem;
 }
 
-@-webkit-keyframes wiggle {
-    0% {-webkit-transform: rotate(10deg);}
-    25% {-webkit-transform: rotate(-10deg);}
-    50% {-webkit-transform: rotate(20deg);}
-    75% {-webkit-transform: rotate(-5deg);}
-    100% {-webkit-transform: rotate(0deg);}
-  }
-  
-  @-ms-keyframes wiggle {
-    0% {-ms-transform: rotate(1deg);}
-    25% {-ms-transform: rotate(-1deg);}
-    50% {-ms-transform: rotate(1.5deg);}
-    75% {-ms-transform: rotate(-5deg);}
-    100% {-ms-transform: rotate(0deg);}
-  }
-  
-  @keyframes wiggle {
-    0% {transform: rotate(10deg);}
-    25% {transform: rotate(-10deg);}
-    50% {transform: rotate(20deg);}
-    75% {transform: rotate(-5deg);}
-    100% {transform: rotate(0deg);}
-  }
+/* Restart Button */
+#restart {
+    font-family: 'PressStart2';
+    font-size: 1rem;
+    padding: .75rem .75rem;
+    background-color: white;
+    border: 5px solid transparent;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.5) inset;
+    transition: 0.3s ease;
+    cursor: pointer;
+    display: none;
+}
 
+#restart:hover {
+    transform: scale(1.25);
+}
 
+/* Footer styling */
+footer {
+    height: 6vh;
+    padding: 0.5rem;
+    background-color: indigo;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: lightgray;
+}
